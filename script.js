@@ -96,10 +96,8 @@ const createCards = () => {
   cardsCreated = true;
 };
 
-
 // "Função" para iniciar o jogo
 btnStartGame.addEventListener("click", createCards);
-
 
 // Função para virar a carta
 const flipCard = (event) => {
@@ -162,16 +160,12 @@ const getCardSrc = (card) => {
   const card2 = card.parentNode.parentNode;
 
   if (card1) {
-    const cardString = card1.querySelector("img").src.substr(29).slice(0, -4);
-
-    return cardString;
+    return card1.querySelector("img").src.substr(29).slice(0, -4);
   } else {
-    const backImg = card2
+    return card2
       .querySelector(".back")
       .querySelector("img")
       .src.substr(29)
       .slice(0, -4);
-
-    return backImg;
   }
 };
