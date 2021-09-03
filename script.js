@@ -44,7 +44,7 @@ const btnStartGame = document.querySelector(".btn-start");
 
 let cardsCreated = false;
 let isCardFliped = false;
-const pairCards = [];
+let pairCards = [];
 
 // Função para embaralhar as cartas
 const shuffleCards = (array) => {
@@ -101,11 +101,13 @@ btnStartGame.addEventListener("click", createCards);
 
 // Função para virar a carta
 const flipCard = (event) => {
+  if (pairCards.length === 2) return;
   const card = event.target;
   const cardSRC = getCardSrc(card);
   saveCards(cardSRC);
   console.log(pairCards);
   // console.log(cardSRC);
+  
   if (card.src) {
     card.parentNode.style.transform = "perspective(500px) rotateY(180deg)";
     const backFace = card.parentNode.nextSibling;
@@ -123,6 +125,9 @@ const flipCard = (event) => {
 
 // Função para desvirar a carta
 const flipCardReverse = (event) => {
+  cleanPairCards();
+
+  console.log(pairCards)
   const card = event.target.parentNode;
 
   if (card.querySelector(".back")) {
@@ -145,6 +150,12 @@ const verifyEqualCards = (card1, card2) => {
 };
 
 // Função para "apagar" as cartas iguais e adicionar ponto ao user
+
+// Função para limpar o array de pares
+
+const cleanPairCards = () => {
+  pairCards.pop();
+}
 
 // Função para armazenar as cartas viradas em par
 const saveCards = (card) => {
