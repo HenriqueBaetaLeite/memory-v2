@@ -58,8 +58,8 @@ body {
 
 .card {
   position: relative;
-  width: 300px;
-  height: 400px;
+  width: 170px;
+  height: 220px;
   transform-style: preserve-3d;
 }
 
@@ -96,6 +96,6 @@ body {
 } */
 
 .card .face img {
-  width: 200px;
+  width:100px;
   transform: perspective(500px) translateZ(40px);
 }

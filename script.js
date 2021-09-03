@@ -101,6 +101,9 @@ btnStartGame.addEventListener("click", createCards);
 
 // Função para virar a carta
 const flipCard = (event) => {
+  if (pairCards.length === 2) {
+    return;
+  }
   const card = event.target;
   const cardSRC = getCardSrc(card);
   saveCards(cardSRC);
